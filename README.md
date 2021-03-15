@@ -25,7 +25,7 @@ One can use *dom-shift* directly from a web-page by attaching the *dom-shift.js*
 
     <!-- Usage -->
     <script type="text/javascript">
-        pageChatter.init();
+        domShift.init();
     </script>
 
 ### With [Webpack](https://webpack.js.org), [Browserify](http://browserify.org) or [RequireJS](http://requirejs.org)
@@ -36,20 +36,20 @@ Install *dom-shift* from NPM
 
 Consume as an ES6 module
 
-    import * as pageChatter from 'dom-shift';
+    import * as domShift from 'dom-shift';
 
 or
 
-    import { init, listen, talk } from 'dom-shift';
+    import { executeAfterDelay, shiftDom } from 'dom-shift';
 
 Consume as a CommonJS module
 
-    var pageChatter = require('dom-shift');
+    var domShift = require('dom-shift');
 
 Consume as an AMD
 
-    require(['dom-shift'], function (pageChatter) {
-        // Consume pageChatter
+    require(['dom-shift'], function (domShift) {
+        // Consume domShift
     }
 
 Note: You may have to use [Babel](https://babeljs.io) for ES6 transpilation.
@@ -58,54 +58,38 @@ Note: You may have to use [Babel](https://babeljs.io) for ES6 transpilation.
 
 1. Import *dom-shift* functions
 
-        import { init, listen, talk, broadcast, terminate } from 'dom-shift';
+        import { executeAfterDelay, shiftDom } from 'dom-shift';
 
-2. Initialize *dom-shift*
+2. Shift DOM through states
 
-        init();
-
-    The above line should be placed in the parent-most app, the one that can host *dom-shift* in a way that it can be accessed from any other contained app participating in the chatter. 
-
-3. Listen to chatter from an app on the page
-
-        listen(
-            'sub-app1', // Own Id
-            ({ event, payLoad }) => {
-                // TODO: Consume messages
-            }
+        shiftDom(
+            [
+                {
+                    name: 'start-logs',
+                    step: done => {
+                        executeAfterdelay(done, 2000)
+                    },
+                }, // Adds a CSS class 'state-start-logs' to body tag and runs for 2000 milliseconds
+                {
+                    name: 'spawn-terminal',
+                    step: () => {
+                        print(
+                            document.querySelector('.frame'),
+                            mateInstall,
+                            30
+                        );
+                    },
+                    duration: 4000
+                }, // Adds a CSS class 'state-spawn-terminal to body tag and runs for 4000 milliseconds
+                {
+                    name: 'flip',
+                    step: () => {},
+                    duration: 1500
+                }  // Adds a CSS class 'state-flip to body tag and runs for 1500 milliseconds
+            ]
         );
 
-    The first argument to `listen` needs to be an identifier for the current participating app and the second is a handler that receives messages with an `event` and a `payLoad` (if at all there's one).
-
-4. Talk to another app participating in the chatter
-
-        talk(
-            'sub-app2', // Id of the recipient
-            'get-sum', // Event identifier
-            {
-                num1: 2,
-                num2: 3
-            } // Message data
-        );
-
-    The first argument to `talk` is the identifier of the recipient, the second is the `event` for the recipient to know the nature of the message and the third is the `payLoad`.
-
-5. Talk to all other participants at once
-
-        broadcast(
-            'he-is-here' // Event identifier
-            {
-                who: 'someone'
-            } // Message data
-        );
-
-    The arguments to `broadcast` are the same as `talk` but there is no `id` for the recipient, as all participants can listen.
-
-6. [Optional] Terminate the chatter
-
-        terminate();
-
-    A call to `terminate` releases *dom-shift*'s control from the page and returns everything back to normal.
+You can either use the function `executeAfterDelay` as shown in the example or use the key `duration` to supply a step duration in milliseconds.
 
 ## Demo [coming-soon]
 
