@@ -1,15 +1,12 @@
 # dom-shift
 
 [![npm version](https://badge.fury.io/js/dom-shift.svg)](https://badge.fury.io/js/dom-shift)
-[![npm downloads](https://img.shields.io/npm/dt/dom-shift.svg)](https://www.npmjs.com/package/dom-shift)  
+[![npm downloads](https://img.shields.io/npm/dt/dom-shift.svg)](https://www.npmjs.com/package/dom-shift)
+[![License](https://img.shields.io/github/license/myTerminal/dom-shift.svg)](https://opensource.org/licenses/MIT)  
 [![Build Status](https://travis-ci.org/myTerminal/dom-shift.svg?branch=master)](https://travis-ci.org/myTerminal/dom-shift)
 [![Code Climate](https://codeclimate.com/github/myTerminal/dom-shift.png)](https://codeclimate.com/github/myTerminal/dom-shift)
 [![js-myterminal-style](https://img.shields.io/badge/code%20style-myterminal-blue.svg)](https://www.npmjs.com/package/eslint-config/myterminal)
 [![Coverage Status](https://img.shields.io/coveralls/myTerminal/dom-shift.svg)](https://coveralls.io/r/myTerminal/dom-shift?branch=master)  
-[![Dependency Status](https://david-dm.org/myTerminal/dom-shift.svg)](https://david-dm.org/myTerminal/dom-shift)
-[![devDependency Status](https://david-dm.org/myTerminal/dom-shift/dev-status.svg)](https://david-dm.org/myTerminal/dom-shift#info=devDependencies)
-[![peer Dependency Status](https://david-dm.org/myTerminal/dom-shift/peer-status.svg)](https://david-dm.org/myTerminal/dom-shift#info=peerDependencies)  
-[![License](https://img.shields.io/github/license/myTerminal/dom-shift.svg)](https://opensource.org/licenses/MIT)  
 [![NPM](https://nodei.co/npm/dom-shift.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/dom-shift/)
 
 A minimal library to switch DOM states using a CSS class.
