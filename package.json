@@ -1,6 +1,6 @@
 {
   "name": "dom-shift",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "A minimal library to switch DOM states using a CSS class",
   "main": "build/scripts/dom-shift.js",
   "files": [
